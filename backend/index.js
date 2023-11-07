@@ -12,10 +12,7 @@ app.use(express.urlencoded({ extended: true }));// в Express.js использ�
 //  app.use("/api", router);
 
 
-await mongoose.connect(DB_URL, {
-		useNewUrlParser: true,
-		useUnifiedTopology: true,
-	});
+await mongoose.connect(DB_URL);
 
 app.get('/api/hello', (req, res) => {
   // Отправляем строку 'hello' в ответе.
@@ -24,7 +21,7 @@ app.get('/api/hello', (req, res) => {
 
 app.post("/api/users/register", async (req, res) => {
 	//отправляем пост запрос на сервер и передаем в бади логин и пароль
-	const createdUser = await userModel.create({
+	const createdUser = await UserModel.create({
 		login: req.body.login,
 		password: req.body.password,
 		name: req.body.name,
