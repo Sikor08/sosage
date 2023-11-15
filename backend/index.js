@@ -10,10 +10,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true })); // в Express.js используется для подключения middleware, который отвечает за парсинг входящих запросов с данными, закодированными в формате application/x-www-form-urlencoded. Этот формат обычно используется HTML формами.
 //  app.use("/api", router);
 
-await mongoose.connect(DB_URL, {
-	useNewUrlParser: true,
-	useUnifiedTopology: true,
-});
+await mongoose.connect(DB_URL);
 
 app.get("/api/hello", (req, res) => {
 	// Отправляем строку 'hello' в ответе.
