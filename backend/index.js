@@ -2,12 +2,14 @@ import express from "express"; // Библиотека для бекенда (о
 import * as dotenv from "dotenv";
 import mongoose, { connect } from "mongoose";
 import UserModel from "./models/UserModel.js";
+import cors from "cors";
 dotenv.config();
 
 const app = express();
 const DB_URL = process.env.CONNECT_MONGO;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); // в Express.js используется для подключения middleware, который отвечает за парсинг входящих запросов с данными, закодированными в формате application/x-www-form-urlencoded. Этот формат обычно используется HTML формами.
+app.use(cors());
 //  app.use("/api", router);
 
 await mongoose.connect(DB_URL);
